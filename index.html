@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="x-dns-prefetch-control" content="on"> 
+       <link rel="stylesheet" href="css/index.css"> 
+       <script src="js/phone.js"></script>
+        <title>都市青年扎心图鉴</title>
+    </head>
+    <body style="background: #FFF;">
+        <!--https://g.mdcdn.cn/h5/img/act/201711/hand_02.png-->
+        <!--https://g.mdcdn.cn/h5/img/act/201711/loading.gif-->
+        <div class="game_con_wrap" style="text-align: center;font-size: 18px;"> 
+              <div class="mask"></div>
+            <div class="timebox">
+                <img src="images/time/0.png" alt="" class="time1">
+                <img src="images/time/7.png" alt="" class="time2">
+                <img src="images/time/0.png" alt="" class="time3">
+                <img src="images/time/0.png" alt="" class="time4">
+            </div>
+            <div class="audio">
+                <audio src="audio/feiji.mp3" id="audio_feiji" preload="auto"></audio>
+                <audio src="audio/xishoujian.wav" id="audio_xishoujian" preload="auto"  ></audio>
+                <audio src="audio/jiedao.mp3" id="audio_jieshang" preload="auto"></audio>
+                <audio src="audio/ditie.mp3" id="audio_ditie" preload="auto"></audio> 
+                <audio src="audio/dianti.mp3" id="audio_dianti"  preload="auto"  ></audio>
+                <audio src="audio/jianpan.mp3" id="audio_jianpan" preload="auto"></audio> 
+
+            </div>
+            <div class="loading hide" id="loading" >
+                <div class="loading_main">
+                    <img src="images/loading_text1.png" alt="" class="loadingtext1">
+                    <div class="percent" id="percent">
+                       <span class="yellow"></span>
+                        <img src="images/loading_mao.png" alt="" class="mao">
+                    </div>
+                    <img src="images/loading_text2.png" alt="" class="loadingtext2">
+                    <img src="images/loading_phone.png" alt="" class="loadingphone">
+                    <img src="images/loading_text3.png" alt="" class="loadingtext3">
+                </div>
+
+            </div>
+        </div>
+        <div class="mask_share hide js_mask_share">
+            <div class="share_hand">
+                <img src="images/sharepyq.png" alt="">
+            </div>
+        </div>
+
+        <div class="hidden_click js_click_fake hide" data-mtag="20049.3.40016"></div>
+        <!-- 手机竖屏提醒 -->
+
+        <div id="orientLayer" class="mod-orient-layer">
+
+            <div class="mod-orient-layer__content"><i class="icon-wx mod-orient-layer__icon-orient"></i>
+
+                <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
+
+            </div>
+
+        </div>
+
+        <!-- 手机竖屏提醒  end -->
+
+        </div>
+
+
+        <script src="js/pixi.js"></script>
+        <script src="js/Tween.js"></script>  
+        <script src="js/zepto.js"></script> 
+        <script src="js/index.js"></script> 
+       
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>  
+        <script type="text/javascript">
+            var localTitle = "都市青年扎心图鉴";//分享标题
+            var localUrl = "http://5i5j.angwei.net/20190624/";//分享地址
+            var localPhoto = "http://5i5j.angwei.net/user/images/choujiang/fenxiang.jpg";//分享图片
+            var localDesc = "这里面有你的故事";//分享内容
+            var musics = true; 
+        </script>
+        <script type="text/javascript" src="js/weixin_common.js"></script>
+   <script>
+        $(function(){
+            $(".mask_share").click(function(){
+                $(this).addClass("hide");
+            });
+            window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+                if (window.orientation === 180 || window.orientation === 0) { 
+                    location.reload();
+                }
+                if (window.orientation === 90 || window.orientation === -90 ){ 
+                    location.reload();
+                }
+            }, false);
+        })
+        </script>
+
+
+    </body>
+
+</html>
