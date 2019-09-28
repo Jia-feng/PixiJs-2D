@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <link rel="dns-prefetch" href="//g.mdcdn.cn/">
+
+
+
+        <script type="text/javascript">
+            ;
+            (function (win) {
+                var h;
+                var docEl = document.documentElement;
+
+                function setUnitA() {
+                    var winWidth = docEl.getBoundingClientRect().width > 768 ? 768 : docEl.getBoundingClientRect().width;
+                    win.rem = winWidth / 10;
+                    docEl.style.fontSize = win.rem + 'px';
+                }
+
+                win.addEventListener('resize', function () {
+                    clearTimeout(h);
+                    h = setTimeout(setUnitA, 300);
+                }, false);
+                win.addEventListener('pageshow', function (e) {
+                    if (e.persisted) {
+                        clearTimeout(h);
+                        h = setTimeout(setUnitA, 300);
+                    }
+                }, false);
+
+                setUnitA();
+            })(window);
+            window.initData={
+
+                page:'demo'
+            }
+
+
+
+        </script>
+        <style>
+            /**
+            * Eric Meyer's Reset CSS v2.0 (https://meyerweb.com/eric/tools/css/reset/)
+            * https://cssreset.com
+            */
+
+            html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font-weight: normal;
+                vertical-align: baseline;
+            }
+
+            td, th {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+
+            /* HTML5 display-role reset for older browsers */
+
+            article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+                display: block;
+            }
+
+            body {
+                line-height: 1;
+            }
+
+            blockquote, q {
+                quotes: none;
+            }
+
+            blockquote:before, blockquote:after, q:before, q:after {
+                content: none;
+            }
+
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+
+            /* custom */
+
+            a {
+                color: #7e8c8d;
+                text-decoration: none;
+                -webkit-backface-visibility: hidden;
+            }
+
+            li {
+                list-style: none;
+            }
+
+            ::-webkit-scrollbar {
+                width: 5px;
+                height: 5px;
+            }
+
+            ::-webkit-scrollbar-track-piece {
+                background-color: rgba(0, 0, 0, 0.2);
+                -webkit-border-radius: 6px;
+            }
+
+            ::-webkit-scrollbar-thumb:vertical {
+                height: 5px;
+                background-color: rgba(125, 125, 125, 0.7);
+                -webkit-border-radius: 6px;
+            }
+
+            ::-webkit-scrollbar-thumb:horizontal {
+                width: 5px;
+                background-color: rgba(125, 125, 125, 0.7);
+                -webkit-border-radius: 6px;
+            }
+
+            html, body {
+                width: 100%;
+            }
+
+            body {
+                -webkit-text-size-adjust: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+            .hidden{
+                display: none;
+            }
+            .mask {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                z-index: 10;
+                display: none;
+            }
+            .loading ,.mask_share{
+                width: 100%;
+                height: 100%;
+                /*background: #fefefe;*/
+                position: absolute;
+                top: 0;
+                z-index: 100;
+                -webkit-transform-origin: 0 0;
+                /*top:0;*/
+                left: 0;
+                /*width: 100%;*/
+                /*height: 100%;*/
+                background: #000;
+            }
+
+            .mask_share{
+                z-index:1002;
+            }
+
+            .loading_main{
+                width:129px ;
+                height: 155px;
+                position: absolute;
+                top:50%;
+                left: 50%;
+                margin-left: -64px;
+                margin-top: -77px;
+            }
+            .loading_main img{
+                display: block;
+                width: 100%;
+            }
+            .percent {
+                color: #fff;
+                font-size: 24px;
+
+                width: 100%;
+
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .game_con_wrap{
+                width: 100%;
+                height: 100%;
+
+                position: absolute;
+                top: 0;
+                z-index: 100;
+                -webkit-transform-origin: 0 0;
+
+                left: 0;
+
+                background: #000;
+
+
+            }
+
+            .share_hand{
+                width: 235px;
+                height: 235px;
+                position: absolute;
+                top:0;
+                right: 0;
+            }
+            .share_hand img{
+                display: block;
+                width: 100%;
+            }
+            .hide{
+                display: none!important;
+            }
+        </style>
+        <title>神秘失踪</title>
+    </head>
+    <body>
+        <!--https://g.mdcdn.cn/h5/img/act/201711/hand_02.png-->
+        <!--https://g.mdcdn.cn/h5/img/act/201711/loading.gif-->
+        <div class="game_con_wrap">
+            <h1 class="hidden">美的11·11活动</h1>
+            <div class="mask"></div>
+            <div class="audio">
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_book.mp3" id="ms_book" preload="auto"></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_canival_bgm.mp3" id="ms_canival_bgm" preload="auto" loop="loop" ></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_crown.mp3" id="ms_crown" preload="auto"></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_heart_beating.mp3" id="ms_heart_beating" preload="auto"></audio>
+                <!--<audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_iphone.mp3" id="ms_iphone" preload="auto"></audio>-->
+                <!--<audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_leaf.wav" id="ms_leaf" preload="auto"></audio>-->
+                <!--<audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_light.wav" id="ms_light"></audio>-->
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_scared_bgm.mp3" id="ms_scared_bgm" loop="loop"  ></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_screaming.mp3" id="ms_screaming" preload="auto"></audio>
+                <!--<audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_wind.mp3" id="ms_wind" preload="auto"></audio>-->
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_wolf_bgm.mp3" id="ms_wolf_bgm" preload="auto"></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_bat.mp3" id="ms_bat" preload="auto"></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_breath.wav" id="ms_breath" preload="auto"></audio>
+                <audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ms_running.mp3" id="ms_running" preload="auto"></audio>
+                <!--<audio src="https://g.mdcdn.cn/h5/music/act/sound2017/ring.wav" id="ms_ring" preload="auto"></audio>-->
+
+            </div>
+            <div class="loading hide" id="loading" >
+                <div class="loading_main">
+                    <img src="https://g.mdcdn.cn/h5/img/act/201711/loading.gif" alt="">
+                    <div class="percent" id="percent">0%</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="mask_share hide js_mask_share">
+            <div class="share_hand">
+                <img src="https://g.mdcdn.cn/h5/img/act/201711/share_hand.png" alt="">
+            </div>
+        </div>
+
+        <div class="hidden_click js_click_fake hide" data-mtag="20049.3.40016"></div>
+
+
+
+
+        <script type="text/javascript">
+            window.url="https://event.midea.com/promote/w/build/index/aWQwTfmdaS0x9NjA2JmlzX2ludGVyaW9yPTA?mtag=20049.2.40056";
+            window.userNick="老板大人";
+            window.curUserNick="亲爱的美粉";
+            window.curUserImage="//pic.midea.cn/h5/img/act/201711/mis_cur_user_default_o.jpg?x-oss-process=image/format,webp/quality,Q_90&";
+            window.curUidBase64="";
+            window.total="0";
+            var shareArr=[
+                {
+                    title:'这里是标题1',
+                    desc:'这里是描述1'
+                },
+                {
+                    title:'这里是标题1',
+                    desc:'这里是描述1'
+                }
+            ];
+
+
+
+            var link="https://event.midea.com/act/mystery/index?mtag=20049.3.40017"
+            var randomIndex= Math.floor(Math.random() * 2);
+            var shareInfo=shareArr[randomIndex];
+            // 微信分享
+            window._md_share_config = {
+                title: window.curUserNick+'分享了一条定位信息，点开竟是....',
+                desc: '闭嘴！我才没有被吓到！',
+                link: link,
+                imgUrl: "https://pic.midea.cn/h5/img/act/201711/share_small.jpg?x-oss-process=image/format,webp/quality,Q_90&"
+            };
+        </script>
+        <script>
+            (function () {
+                var onloadTime = Date.parse(new Date()); //进入页面时间
+
+                var _footConfig = {
+                    pagePV: false
+                };
+                if (window.footConfig) {
+                    for (var key in _footConfig) {
+                        if (footConfig[key]) {
+                            _footConfig[key] = footConfig[key];
+                        }
+                    }
+                }
+
+                function getCookie(name) {
+                    var reg = new RegExp("(^| )" + name + "(?:=([^;]*))?(;|$)"),
+                        val = document.cookie.match(reg);
+                    return val ? (val[2] ? unescape(val[2]) : "") : null;
+                }
+
+                function setCookie(name, value, expires, path, domain, secure) {
+                    var exp = new Date(),
+                        expires = arguments[2] || null,
+                        path = arguments[3] || "/",
+                        domain = arguments[4] || null,
+                        secure = arguments[5] || false;
+                    expires ? exp.setMinutes(exp.getMinutes() + parseInt(expires)) : "";
+                    document.cookie = name + '=' + encodeURIComponent(value) + (expires ? ';expires=' + exp.toGMTString() : '') + (path ? ';path=' + path : '') + (domain ? ';domain=' + domain : '') + (secure ? ';secure' : '');
+                }
+
+                function getUrlParam(name, url) {
+                    //参数：变量名，url为空则表从当前页面的url中取
+                    var u = arguments[1] || window.location.search,
+                        reg = new RegExp("(^|&)" + name + "=([^#&]*)(&|#|$)"),
+                        r = u.substr(u.indexOf("\?") + 1).match(reg);
+                    return r != null ? r[2] : "";
+                }
+
+                function $loadUrl(o) {
+                    o.element = o.element || 'script';
+                    var el = document.createElement(o.element);
+                    el.charset = o.charset || 'utf-8';
+                    o.onBeforeSend && o.onBeforeSend(el);//发请求之前调用的函数
+                    el.onload = el.onreadystatechange = function () {
+                        if (/loaded|complete/i.test(this.readyState) || navigator.userAgent.toLowerCase().indexOf("msie") == -1) {
+                            o.onload && o.onload();//
+                            clear();
+                        }
+                    };
+                    el.onerror = function () {
+                        clear();
+                    };
+                    el.src = o.url;
+                 //   document.getElementsByTagName('head')[0].appendChild(el);
+
+                    function clear() {
+                        if (!el) {
+                            return;
+                        }
+                        el.onload = el.onreadystatechange = el.onerror = null;
+                        el.parentNode && (el.parentNode.removeChild(el));
+                        el = null;
+                    }
+                }
+
+                function updateEnv(data) {
+                    for (var envKey in data) {
+                        if (envKey == 'channel') {
+                            window.WEB_CHANNEL = env[envKey];
+                            // APP环境的固定场景值，不需要再改变
+                            if (env[envKey] == 4 || env[envKey] == 5) {
+                                continue;
+                            }
+                        }
+
+                        if (data[envKey]) {
+                            env[envKey] = data[envKey];
+                        }
+                    }
+                    setCookie('env', '', -1, '', '.w.midea.com');
+                    setCookie('env', JSON.stringify(env), 525600, '', domain);
+                }
+
+                function reportRd(opt) {
+                    var pageMess = window.pageMess || {};
+                    var oParams =  {
+                        curl: location.href,
+                        rurl: document.referrer,
+                        serviceid: 10,
+                        mtag: '',
+                        skuid: pageMess['skuid'] || getUrlParam('skuid') || '',
+                        distributorid: pageMess['distributorid'] || getUrlParam('distributorid') || getUrlParam('disid') || '',
+                        dealid: pageMess['dealid'] || getUrlParam('dealid') || '',
+                        sellerid: pageMess['sellerid'] || getUrlParam('sellerid') || '',
+                        supplierid: pageMess['supplierid'] || '',
+                        itemid: pageMess['itemid'] || getUrlParam('itemid') || '',
+                        fromuid: getUrlParam('__fromuid'),
+                        from: getUrlParam('from'),
+                        staytime: ''
+                    },
+                        arrParams = [];
+
+                    if (location.href.indexOf('.midea.com/detail/index') > -1 && !oParams.skuid) {
+                        oParams.skuid = getUrlParam('id');
+                    }
+
+                    for (var key in oParams) {
+                        var v = opt[key];
+                        if (v) {
+                            oParams[key] = v;
+                        }
+
+                        arrParams.push(key + '=' + encodeURIComponent(oParams[key]));
+                    }
+
+                    $loadUrl({
+                        url: '/common/log/rd?callback=rdcb&' + arrParams.join('&')
+                    });
+                }
+
+                // 初始化env对象
+                var env = getCookie('env');
+                try {
+                    if (!env) {
+                        env = {};
+                    } else {
+                        env = JSON.parse(env);
+                    }
+                } catch (e) {
+                    env = {};
+                }
+
+                // 收集场景信息
+                var ua = navigator.userAgent.toLowerCase(),
+                    channel,   //  channel 1 微信，2 移动web，3 PC，4 美的商城APP，5 美家APP
+                    regsrc = getUrlParam('regsrc') || '',
+                    mh = getUrlParam('midea_home') == 1 ? 1 : 0;
+
+                if (mh == 1) {
+                    // midea home
+                    channel = 5;
+                } else if (ua.indexOf('micromessenger') > -1) {
+                    //wechat
+                    channel = 1;
+                } else if (ua.indexOf('mideamall') > -1 || window.WebViewJavascriptBridge || window.md || location.href.indexOf('appview') > -1) {
+                    channel = 4;
+                } else if (/AppleWebKit.*Mobile/i.test(ua) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/i.test(ua))) {
+                    // mobile
+                    channel = 2;
+                }
+
+                document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                    channel = 4;
+                    updateEnv({
+                        channel: channel
+                    });
+                }, false);
+
+                // mtag统计
+                var mtag = getUrlParam('mtag') || '',
+                    allTags = getCookie('mtag') || '',
+                    regMtag = /^[1-4]\d{4}\.\d+\.\d+$/,
+                    arrTag = allTags.split(';'),
+                    tmpTag,
+                    newMtags = [],
+                    isReplace = false,
+                    mtagChannel,
+                    domain = location.host.replace(/\w+(\.)/, '$1');
+                if (mtag && (regMtag.test(mtag))) {
+                    mtagChannel = mtag.split('.')[0].split('')[0];
+                    for (var i = 0; i < arrTag.length; i++) {
+                        tmpTag = arrTag[i];
+                        if(regMtag.test(tmpTag)) {
+                            if (tmpTag.split('.')[0].split('')[0] == mtagChannel) {
+                                newMtags.push(mtag);
+                                isReplace = true;
+                            } else {
+                                newMtags.push(tmpTag);
+                            }
+                        }
+                    }
+
+                    if (newMtags.length === 0 || isReplace === false) {
+                        newMtags.push(mtag);
+                    }
+                    reportRd({mtag: mtag});
+                    setCookie('mtag',  newMtags.join(';'), 10080, '', domain);
+                } else {
+                    reportRd({mtag: ''});
+                }
+
+                updateEnv({
+                    channel: channel,
+                    regsrc: regsrc
+                });
+
+                if (channel != 4) {
+                    // 统计代码
+                    var oScript = document.createElement('SCRIPT');
+                    oScript.src = 'https://hm.baidu.com/h.js?4b9a2b6647c9bdd3d01c28ea3f46049b';
+                    oScript.charset = 'utf-8';
+                    document.getElementsByTagName('head')[0].appendChild(oScript);
+                }
+
+                document.body.addEventListener("click", function (e) {
+                    var evt = e || window.event,
+                        src = evt.srcElement || evt.target,
+                        mtag;
+
+                    while (src && !mtag && src !== document.body) {
+                        mtag = src.getAttribute ? src.getAttribute('data-mtag') : '';
+                        src = src.parentNode;
+                    }
+
+                    if (mtag) {
+                        reportRd({mtag: mtag});
+                    }
+                });
+
+                window.onbeforeunload = function() {
+                    var unloadTime = Date.parse(new Date());
+                    var stayTime = (unloadTime - onloadTime)/1000;
+                    if(stayTime < 60 * 30){
+                        reportRd({staytime: stayTime})
+                    }
+                }
+
+
+            })();
+        </script>
+        <script src="//res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+        <script>
+            (function () {
+                var ua = navigator.userAgent.toLowerCase();
+                function getCookie(name) {
+                    var reg = new RegExp("(^| )" + name + "(?:=([^;]*))?(;|$)"),
+                        val = document.cookie.match(reg);
+                    return val ? (val[2] ? decodeURIComponent(val[2]) : "") : "";
+                }
+
+                function loadUrl(o) {
+                    o.element = o.element || 'script';
+                    var el = document.createElement(o.element);
+                    el.charset = o.charset || 'utf-8';
+                    o.onBeforeSend && o.onBeforeSend(el);
+                    el.onload = el.onreadystatechange = function () {
+                        if (/loaded|complete/i.test(this.readyState) || navigator.userAgent.toLowerCase().indexOf("msie") == -1) {
+                            o.onload && o.onload();
+                            clear();
+                        }
+                    };
+                    el.onerror = function () {
+                        clear();
+                    };
+                    el.src = o.url;
+                    document.getElementsByTagName('head')[0].appendChild(el);
+                    function clear() {
+                        if (!el) {
+                            return;
+                        }
+                        el.onload = el.onreadystatechange = el.onerror = null;
+                        el.parentNode && (el.parentNode.removeChild(el));
+                        el = null;
+                    }
+                }
+
+                var _wxConfig = {
+                    debug: false
+                };
+
+                for (var key in window.WX_CONFIG) {
+                    _wxConfig[key] = window.WX_CONFIG[key];
+                }
+
+                if (ua.indexOf('micromessenger') !== -1) {
+                    loadUrl({url: '/common/wx/getsign?url=' + encodeURIComponent(location.href.split('#')[0]) + '&callback=wxConfCB'+ (window.WX_CONFIG && window.WX_CONFIG['app'] ? '&appname='+window.WX_CONFIG['app']:'')});
+                }
+
+                window.wxConfCB = function (obj) {
+                    window._wxSignData = obj;
+                    var wxConf = {debug: _wxConfig['debug'], appId: obj.appId, timestamp: obj.timestamp, nonceStr: obj.nonceStr, signature: obj.signature, jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'translateVoice', 'startRecord', 'stopRecord', 'onRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getLocalImgData', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard']};
+                    wx.config(wxConf);
+                    wx.ready(function () {
+                        window.WXJSAPI = {
+                            wx: wx,
+                            appShareEntity: null,
+                            initShare: function () {
+                                this.initShareAppMessage();
+                                this.initShareTimeline();
+                                this.initShareQQ();
+                                this.initShareWeibo();
+                            },
+                            initShareAppMessage: function () {
+                                this.wx.onMenuShareAppMessage(setConfig('AppMessage'));
+                            },
+                            initShareTimeline: function () {
+                                this.wx.onMenuShareTimeline(setConfig('Timeline'));
+                            },
+                            initShareQQ: function () {
+                                this.wx.onMenuShareQQ(setConfig('QQ'));
+                            },
+                            initShareWeibo: function () {
+                                this.wx.onMenuShareWeibo(setConfig('Weibo'));
+                            }
+                        };
+
+                        window.WXJSAPI.initShare();
+                        if (window.wxReady) {
+                            window.wxReady(wx);
+                        }
+                    });
+                };
+                try {
+                    function setConfig(share_type) {
+                        share_type = share_type || 'Timeline';
+                        var share_config = window._md_share_config || {};
+                        switch (share_type) {
+                            case 'Timeline':
+                                break;
+                            case 'AppMessage':
+                                share_config = window._md_share_friend_config || share_config;
+                                break;
+                            case 'QQ':
+                                share_config = window._md_share_qq_config || share_config;
+                                break;
+                            case 'Weibo':
+                                share_config = window._md_share_weibo_config || share_config;
+                                break;
+                        }
+                        share_config.link = share_config.url || share_config.link || location.href;
+                        share_config.imgUrl = share_config.image || share_config.img_url || share_config.imgUrl || '';
+                        share_config.image = share_config.imgUrl || '';
+
+                        var arrTemp = share_config.link.split('#');
+                        share_config.link = arrTemp[0];
+                        if (share_config.link.indexOf('__fromuid=') > -1) {
+                            share_config.link = share_config.link.replace(/__fromuid=([^&?]{0,})/i, '__fromuid=' + getCookie('uid'));
+                        } else {
+                            share_config.link += (share_config.link.indexOf('?') > -1 ? '&' : '?') + '__fromuid=' + getCookie('uid');
+                        }
+
+                        if (arrTemp[1]) {
+                            share_config.link += '#' + arrTemp[1];
+                        }
+                        delete share_config.fail;
+                        return share_config;
+                    }
+
+                    window.MIDEAAPP = {
+                        appShareEntity: null,
+                        initShareAPP: function (cb) {
+                            var that = this;
+                            // APP分享
+                            function appReady() {
+                                var shareConfigObj = setConfig();
+                                that.appShareEntity = md.bridge.cmdEntityFactory.createDisplayShareViewCmdEntity(shareConfigObj, function (obj) {
+                                    if (obj.data.result == -2) {
+                                        shareConfigObj.cancel && shareConfigObj.cancel();
+                                    } else {
+                                        shareConfigObj.success && shareConfigObj.success();
+                                    }
+                                });
+                                cb && cb(that.appShareEntity);
+                            }
+
+                            if (window.WebViewJavascriptBridge || window.md) {
+                                appReady();
+                            } else {
+                                document.addEventListener('MDJSBridgeLoaded', function () {
+                                    appReady();
+                                }, false);
+                            }
+                        },
+
+                        shareAPP: function () {
+                            this.initShareAPP(function (appShareEntity) {
+                                md.bridge.bridgeAPI.sendCmd(appShareEntity);
+                            });
+                        }
+                    }
+                } catch (e) {
+                }
+            })();
+        </script>
+
+
+        <script src="https://g.mdcdn.cn/h5/js/act/pixi.js"></script>
+        <script src="https://g.mdcdn.cn/h5/js/act/Tween.js"></script>
+
+
+
+        <script src="//g.mdcdn.cn/wp/dist/lib/zepto.js"></script>
+
+
+        <script src="js/ceshi.js"></script>
+
+
+    </body>
+
+</html>
